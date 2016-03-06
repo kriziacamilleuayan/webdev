@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reservation</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script type="js/bootstrap.js"></script>
+
+</head>
+<body>
+
+
+<div id = "front">
+	<div class="navbar navbar-fixed-top">
+		<div>
+				<div class ="navbar-brand">
+					<a href="index.html#front"></a>
+				</div><!--end tag for navbar-brand-->
+					<div>
+					
+						<a class="navbar-nav" href="index.html">Home</a>
+						<a class="navbar-nav" href="gallery.html">Gallery</a>
+						<a class="navbar-nav" href="reservation.html">Reservation</a>
+						<a class="navbar-nav" href="about.html">About Us</a>
+						<a class="navbar-nav" href="login.html"><img src="images/log.ico" height="16" width="20"></span></a>
+					</div>
+		</div>				
+	</div><!--end tag for navbar-fixed-top-->
+</div><!--end tag for front-->
+
+	
+    <div class="container">
+        <div class="row">
+			<div class="col-md-2 ">
+			</div>
+				<div class="col-md-8 ">
+				
+					<div class="panel panel-default">
+					
+						<div class="panel-heading ">
+							<h3 class="panel-title"><center> Reservation</center></h3>
+						</div>
+						
+						
+	<form method="post">	
+
+					<br><br>
+
+                    <div class="panel-body">
+                   
+							
+
+                                <div class="form-group">
+                                   Type of Service :  <select name="service_category" id="id_service">
+                                   <option value="Nail" selected>Nail Art</option>
+									<option value="Spa">Spa</option>
+									<option value="Spa">Wax</option>
+									<option value="Spa">Make Up</option>
+									<option value="Spa">Hair Cut</option>
+									<option value="Spa">Body Massage</option>
+									<option value="Spa">Hair Color</option>
+                                    </select>
+
+
+								 
+                                     <br><br>
+
+									
+									
+									Staff:
+									
+									<input type="radio" name="staff" value="avail" id="radios-1" checked> Anyone Available
+								
+									<input type="radio" name="staff" value="choose" id="radios-0"  > Choose Staff Personnel
+								
+									<br><br>
+									
+									Date and Time: <input type="datetime-local" name="datime" > 
+									
+									
+									<br><br>
+									
+									Number of Reservation: <input type="number" id="id_res"  name="service_res"
+									min="1" max="99" >
+									
+									<br><br>
+									
+									Total Amount: <input type="text" id="res_price" >
+
+									<br><br>
+
+										
+									
+									
+									
+
+								</div><!--form group-->
+                                <!-- Change this to a button or input when using this as a form -->
+                          
+                       
+                   
+              <!-- add reservation-->      
+            <div> 				 
+		   
+							<center>
+								<input type="submit" name="btnAddRes" id="btnSubmit" value="MAKE A RESERVATION" class="btn btn-sm btn-primary">
+								<input type="submit" name="btnCancelRes" id="btnSubmit" value="CANCEL" class="btn btn-sm btn-primary">
+							
+							</center>
+             </div>
+			 
+			 <br>
+			  <!-- add reservation-->     
+							
+							
+						</div><!-- panel body-->
+					 </div> <!--panel default-->
+					 </form><!--form method-->
+				  </div>	<!--col-md-8-->
+				<div class="col-md-2 ">
+			</div><!--div col md 2-->
+		</div>	<!--row-->	
+	</div> <!--container-->
+
+
+<div class="footer text-center" >
+  <p>Copyright © 2016 KRCH. All Rights Reserved.</p>
+</div>
+
+
+ 
+</body>
+</html>

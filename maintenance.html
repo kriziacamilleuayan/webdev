@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maintenance</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script type="js/bootstrap.js"></script>
+	
+	<script>
+	function isAlpha(evt) 
+		{
+    		evt = (evt) ? evt : window.event;
+		    var charCode = (evt.which) ? evt.which : evt.charCode
+        	if ((charCode < 45 || charCode > 46) && (charCode < 65 || charCode > 90) 
+        		&& (charCode < 97 || charCode > 123) && charCode != 32 && charCode !=39 )
+         	{
+        		return false;
+        }
+	    
+		return true;
+		} //isAlpha
+	</script>
+	
+	
+	<script>
+	function isNumber(evt) 
+    {
+		    evt = (evt) ? evt : window.event;
+		    var charCode = (evt.which) ? evt.which : evt.charCode;
+		    if (charCode > 31 && (charCode < 48 || charCode > 57)) 
+		    {
+		        return false;
+    }
+
+		return true;
+
+		} //isNumber
+		
+		
+	function ageFinding()
+    {
+        var birthDay = document.getElementById("idBday").value;
+        var DOB = new Date(birthDay);
+        var today = new Date();
+        var age = today.getTime() - DOB.getTime();
+        age = Math.floor(age / (1000 * 60 * 60 * 24 * 365.25));
+        
+        document.getElementById("idBday").value = age;
+        
+    } //ageFinding
+	function ageFinding()
+    {
+        var birthDay = document.getElementById("dtPickerBirthday").value;
+        var DOB = new Date(birthDay);
+        var today = new Date();
+        var age = today.getTime() - DOB.getTime();
+        age = Math.floor(age / (1000 * 60 * 60 * 24 * 365.25));
+        
+        //if(age > 0)
+        document.getElementById("intAge").value = age;
+        
+    } //ageFinding
+	
+	
+	function getRowIdentifier(e)
+	{ 
+		var strCustID = e.target.parentNode.childNodes[1].innerText;
+		var strCustFName = e.target.parentNode.childNodes[3].innerText;
+		var strCustMName = e.target.parentNode.childNodes[5].innerText;
+		var strCustLName = e.target.parentNode.childNodes[7].innerText;
+		var strCustBDay = e.target.parentNode.childNodes[9].innerText;
+		var strCustGender      = e.target.parentNode.childNodes[11].innerText;
+     	var strCustAddress      = e.target.parentNode.childNodes[13].innerText;
+     	var strCustContact      = e.target.parentNode.childNodes[15].innerText;
+     	var strCustEmail      = e.target.parentNode.childNodes[17].innerText;
+     	var strCustPass      = e.target.parentNode.childNodes[19].innerText;
+
+
+      	document.getElementById("custID").value = strCustID;
+      	document.getElementById("idfname").value = strCustFName;
+      	document.getElementById("idmname").value = strCustMName;
+      	document.getElementById("idlname").value = strCustLName;
+      	document.getElementById("dtPickerBirthday").value = strCustBDay;
+      	ageFinding();
+
+      	if(strCustGender == "Male")
+      		document.getElementById("radios-0").checked = true;
+		else
+		document.getElementById("radios-1").checked = true;
+
+		document.getElementById("idcontact").value = strCustContact;    
+		document.getElementById("idaddress").value = strCustAddress;
+      	document.getElementById("idemail").value = strCustEmail;
+      	document.getElementById("idpassword").value = strCustPass;
+   	  	      	
+		scrollToTop();		
+	}
+	
+	function pageRefresh()
+	{
+		location.reload();
+	}
+
+		function scrollToTop() 
+	{
+  	
+	var timeOut;
+
+
+  		if (document.body.scrollTop!=0 || document.documentElement.scrollTop!=0)
+  			{
+   	 			window.scrollBy(0,-50);
+    			timeOut=setTimeout('scrollToTop()',10);
+  		}
+
+  		else clearTimeout(timeOut);
+
+	} //scrollToTop	
+	
+	</script>
+	
+
+</head>
+<body>
+
+
+	<div class="navbar navbar-fixed-top">
+		<div>
+				<div class ="navbar-title">
+					<a class="navbar-log" href="login.html"><img src="images/log.ico" height="30" width="30" style="float:right;"></a>
+					<center>MAINTENANCE<center>
+				
+						
+				</div><!--end tag for navbar-title-->
+				
+					<div>
+					
+						
+					
+						
+						
+
+					</div>
+				
+		</div>				
+	</div><!--end tag for navbar-fixed-top-->
+	
+	<div class="row">
+		<div class ="col-sm-2">
+			<div class="side-nav">
+			
+				<div>
+					
+					<button type="button" class="button-hover navbar-but"><a href="#customer"> Customer</a></button>
+					<button type="button" class="button-hover navbar-but"><a href="#staff"> Staff</a></button>
+					<button type="button" class="button-hover navbar-but"><a href="#services"> Services</a></button>
+					
+					</div>
+			
+			</div> <!--side nav-->
+		</div> <!--col-sm-2-->
+	
+			<div class="col-sm-8 ">
+			
+<!-- CUSTOMER SECTION!!!!!-->
+				
+				
+					<div class="panel panel-default">
+					
+						<div class="panel-heading ">
+							<h3 id ="customer" class="panel-title"><center> Customer</center></h3>
+						</div>
+						
+	<form method="post">
+
+					<br><br>
+
+                    <div class="panel-body">
+                   
+							
+
+                                <div class="form-group">
+                                   
+									
+								 
+                                  <br><br>
+                                   First Name :  <input  placeholder="First Name" type="text" name="first_name" id="idfname"  size="30" 
+												  onpaste="return false" onkeypress="return isAlpha(event)" pattern=".*\S+.*" required="">
+
+                                   <br><br>
+                                   Middle Name :  <input  placeholder="Middle Name" type="text" name="mid_name" id="idmname" size="30"
+													onpaste="return false" onkeypress="return isAlpha(event)">
+                                   
+								   <br><br>
+                                   Last Name :  <input  placeholder="Last Name" type="text" name="last_name" id="idlname" size="30"
+												onpaste="return false" onkeypress="return isAlpha(event)" pattern=".*\S+.*" required="">
+
+                                   <br><br>		
+									Birthday: <input type='date' name="bday" id="dtPickerBirthday" 
+												required="" onchange="ageFinding();" min="1914-12-31" />
+									
+									Age: <input type="text" name="age" id="intAge" size="1px" readonly>	
+									
+									<br><br>
+									Gender: 												  <div class="radio">
+													<label for="radios-0">
+													  <input type="radio" name="gender" id="radios-0" value="Male" checked="checked">
+													  Male
+													</label>
+													</div>
+												  <div class="radio">
+													<label for="radios-1">
+													  <input type="radio" name="gender" id="radios-1" value="Female">
+													  Female
+													</label>
+													</div>
+
+
+									<br><br>
+									Contact Number: <input  placeholder="Contact Number" type="text" name="custcontact" id="idcontact"
+													onkeypress="return isNumber(event)" onpaste="return false" maxlength="11" required="">
+									<br><br>
+									Address: <input placeholder="Address"type="text" name="custaddress" id="idaddress" size="40"
+													onpaste="return false" pattern=".*\S+.*" required="">
+									<br><br>
+									Email Address: <input placeholder="E-mail"type="email" name="custemaddress" id="idemail"
+														onpaste="return false" required="">
+									<br><br>
+									Password: <input placeholder="Password" type="password" name="custpass" id="idpassword"
+													onpaste="return false" required="">
+									<br><br>
+
+									
+									
+									
+
+								</div><!--form group-->
+                                <!-- Change this to a button or input when using this as a form -->
+                          
+                       
+                   
+								  <!-- add reservation-->      
+								<div> 				 
+							   
+												<center>
+													<input type="submit" name="btnAddCus" id="btnSubmit" value="ADD" class="btn btn-sm btn-primary">
+													<input type="submit" name="btnEditCus" id="btnSubmit" value="EDIT" class="btn btn-sm btn-primary">
+													<input type="submit" name="btnSaveCus" id="btnSubmit" value="SAVE" class="btn btn-sm btn-primary">
+													<input type="submit" name="btnDeleteCus" id="btnSubmit" value="DELETE" class="btn btn-sm btn-primary">
+												
+												</center>
+								 </div>
+								 
+								 <br>
+								  <!-- add reservation-->     
+							
+							
+					</div><!-- panel body-->
+				</div> <!-- panel default-->
+			</form><!--form method-->
+			
+<section id="maintenance" class="maintenance">											
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-skin">
+					<div class="panel-heading">
+						<h3 class="panel-title"></h3>
+					</div>
+							<div class="tablepanel-body">
+								<form role="form" class="lead">											
+									<div class="row">
+										<!--Search-->
+										<div class="form-group">
+											<div class="col-md-4">
+											<div class="input-group  pull-right">
+											  <input type="text" class="form-control" name="btnSearchCusID" id="btnSearch"  placeholder="Search here"  style="font-size:14px;">
+											  <div class="input-group-btn">
+												<input type="submit" value="SEARCH"class="btn btn-skin"  name="txtSearchCusID" id="txtSearchCusID" data-toggle="dropdown">
+											  </div>
+											</div>
+										  </div>
+										</div>
+									</div>
+								</div>
+										<div class="row">
+											<div class="col-md-12 col-xs-10 pull-left">
+												<p></p>
+												<div class="table-responsive">
+													<table border="2" style="width:100%" id="tblCustomer" class="table table-bordered table-hover" ondblclick="getRowIdentifier(event);">
+								
+															<tr style="background: #ccccb3">
+																<th class="columnsize"><small>CustomerID</small></th>
+																<th class="columnsize"><small>First Name</small></th>
+																<th class="columnsize"><small>Middle Name</small></th>
+																<th class="columnsize"><small>Last Name</small></th>
+																<th class="columnsize"><small>Birthday</small></th>
+																<th class="columnsize"><small>Gender</small></th>
+																<th class="columnsize"><small>Address</small></th>
+																<th class="columnsize"><small>Contact Number</small></th>
+																<th class="columnsize"><small>Email</small></th>
+																<th class="columnsize"><small>Password</small></th>
+															</tr>
+
+
+													
+
+																	<tr>
+																		
+																	</tr>
+															
+													</table>
+												</div> <!--table responsive-->
+											</div> <!--col-md-12 col-xs-10 pull-left-->
+										</div>	<!-- row sa loob ng row-->
+									</div><!-- panel skin-->
+							</form>			
+						</div><!--col-lg-12-->
+					</div> <!--row maintenance-->
+					
+					
+		</section>		
+
+<!-- CUSTOMER SECTION!!!!!-->						
+			
+<!-- STAFF SECTION!!!!!-->
+
+		
+					<div class="panel panel-default">
+					
+						<div class="panel-heading ">
+							<h3 id ="staff" class="panel-title"><center> Staff</center></h3>
+						</div>
+						
+	<form method="post">
+
+					<br><br>
+
+                    <div class="panel-body">
+                   
+							
+
+                                  <div class="form-group">
+
+
+                                	<br><br>
+									First Name :  <input  placeholder="First Name" type="text" name="first_name" id="idfname"  size="30" 
+												  onpaste="return false" onkeypress="return isAlpha(event)" pattern=".*\S+.*" required="">
+									
+									                                   <br><br>
+                                   Middle Name :  <input  placeholder="Middle Name" type="text" name="mid_name" id="idmname" size="30"
+													onpaste="return false" onkeypress="return isAlpha(event)">
+                                   
+								   <br><br>
+                                   Last Name :  <input  placeholder="Last Name" type="text" name="last_name" id="idlname" size="30"
+												onpaste="return false" onkeypress="return isAlpha(event)" pattern=".*\S+.*" required="">
+
+                                   <br><br>		
+									Birthday: <input type='date' name="bday" id="dtPickerBirthday" 
+												required="" onchange="ageFinding();" min="1914-12-31" />
+									
+									Age: <input type="text" name="age" id="intAge" size="1px" readonly>	
+									
+									<br><br>
+									Gender: <input type="radio" name="gender" value="Female" id="radios-1"> Female
+											<input type="radio" name="gender" value="Male" id="radios-0" checked="checked"> Male
+
+									<br><br>
+									Contact Number: <input  placeholder="Contact Number" type="text" name="custcontact" id="idcontact"
+													onkeypress="return isNumber(event)" onpaste="return false" maxlength="11" required="">
+									<br><br>
+									Address: <input placeholder="Address"type="text" name="custaddress" id="idaddress" size="40"
+													onpaste="return false" pattern=".*\S+.*" required="">
+									<br><br>
+							
+									Specialization:
+
+
+									<!--ito yung una hahahaha --> <div class="special">
+								    <input type="checkbox" /> Manicurista<br />
+								    <input type="checkbox" /> Pedicurista<br />
+								    <input type="checkbox" /> Manager <br />
+								    <input type="checkbox" /> Admin <br />
+								    <input type="checkbox" /> Tagabenta <br />
+								    <input type="checkbox" /> Tagagupit <br />
+								    <input type="checkbox" /> Tagawax <br />
+								    <input type="checkbox" /> Tagalinis <br />
+								    <input type="checkbox" /> Taga Make-Up <br />
+								    <input type="checkbox" /> Taga Organize ng Party <br />
+								</div>
+												
+
+								
+									
+                               
+                                </div>
+
+                            
+
+
+                                <!-- Change this to a button or input when using this as a form -->
+                               
+
+                                
+
+                            </fieldset>
+                        </form>
+
+                                <!-- Change this to a button or input when using this as a form -->
+                          
+                       
+                   
+								  <!-- add reservation-->      
+								<div> 				 
+							   
+												<center>
+													<input type="submit" name="btnAddCus" id="btnSubmit" value="ADD" class="btn btn-sm btn-primary">
+													<input type="submit" name="btnEditCus" id="btnSubmit" value="EDIT" class="btn btn-sm btn-primary">
+													<input type="submit" name="btnSaveCus" id="btnSubmit" value="SAVE" class="btn btn-sm btn-primary">
+													<input type="submit" name="btnDeleteCus" id="btnSubmit" value="DELETE" class="btn btn-sm btn-primary">
+												
+												</center>
+								 </div>
+								 
+								 <br>
+								  <!-- add reservation-->     
+							
+							
+					</div><!-- panel body-->
+				</div> <!-- panel default-->
+			</form><!--form method-->
+			
+<section id="maintenance" class="maintenance">											
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-skin">
+					<div class="panel-heading">
+						<h3 class="panel-title"></h3>
+					</div>
+							<div class="tablepanel-body">
+								<form role="form" class="lead">											
+									<div class="row">
+										<!--Search-->
+										<div class="form-group">
+											<div class="col-md-4">
+											<div class="input-group  pull-right">
+											  <input type="text" class="form-control" name="btnSearchCusID" id="btnSearch"  placeholder="Search here"  style="font-size:14px;">
+											  <div class="input-group-btn">
+												<input type="submit" value="SEARCH"class="btn btn-skin"  name="txtSearchCusID" id="txtSearchCusID" data-toggle="dropdown">
+											  </div>
+											</div>
+										  </div>
+										</div>
+									</div>
+								</div>
+										<div class="row">
+											<div class="col-md-12 col-xs-10 pull-left">
+												<p></p>
+												<div class="table-responsive">
+													<table border="2" style="width:100%" id="tblCustomer" class="table table-bordered table-hover" ondblclick="getRowIdentifier(event);">
+								
+															<tr style="background: #ccccb3">
+																<th class="columnsize"><small>Staff ID</small></th>
+																<th class="columnsize"><small>First Name</small></th>
+																<th class="columnsize"><small>Middle Name</small></th>
+																<th class="columnsize"><small>Last Name</small></th>
+																<th class="columnsize"><small>Birthday</small></th>
+																<th class="columnsize"><small>Gender</small></th>
+																<th class="columnsize"><small>Address</small></th>
+																<th class="columnsize"><small>Contact Number</small></th>
+																<th class="columnsize"><small>Specialization</small></th>
+																
+															</tr>
+
+
+													
+
+																	<tr>
+																		
+																	</tr>
+															
+													</table>
+												</div> <!--table responsive-->
+											</div> <!--col-md-12 col-xs-10 pull-left-->
+										</div>	<!-- row sa loob ng row-->
+									</div><!-- panel skin-->
+							</form>			
+						</div><!--col-lg-12-->
+					</div> <!--row maintenance-->
+					
+					
+		</section>		
+
+
+
+
+	
+
+<!-- STAFF SECTION!!!!!-->
+
+<!-- SERVICE SECTION!!!!!!-->
+
+	<div class="panel panel-default">
+					
+						<div class="panel-heading">
+							<h3 id="services" class="panel-title"><center> Service</center></h3>
+						</div>
+						
+<form method ="post">
+					<br><br>
+
+
+
+
+                  
+
+
+                    <div class="panel-body">
+                   
+							
+
+                                <div class="form-group">
+								 
+                                      <br><br>
+
+									Service Name: <input type="text" placeholder="Service Name" name="service_name" id="id_name"
+									onpaste="return false" onkeypress="return isAlpha(event)" pattern=".*\S+.*" required="">
+									<br><br>
+									Description :<br> <textarea rows="5" cols="50" name="description_form"> </textarea>
+									
+								
+									<br><br>
+									
+									Price: <input type="text" id="id_price" placeholder="ex: 100.00" name="service_price"
+									min="1" onkeypress="return isNumber(event)" onpaste="return false" required="">
+
+									<br><br><br>
+
+										
+									
+									
+									
+
+								</div><!--form group-->
+                                <!-- Change this to a button or input when using this as a form -->
+                          
+                       
+                   
+              <!-- add service-->      
+            <div> 				 
+		    <?php
+				require 'Addservice.php';
+			?>
+							<center>
+								<input type="submit" name="btnAddServ" id="btnSubmit" value="ADD" class="btn btn-sm btn-primary">
+								<input type="submit" name="btnSaveServ" id="btnEditSubmit" value="SAVE" class="btn btn-sm btn-primary">
+									<input type="submit" name="btnEditServ" id="btnEditSubmit" value="EDIT" class="btn btn-sm btn-primary">
+								<input type="submit" name="btnDeleteServ" id="btnDeleteSubmit" value="DELETE" class="btn btn-sm btn-primary">
+							</center>
+             </div>
+			  <!-- add service-->     
+							
+							
+				</div><!-- panel body-->
+			</div> <!--panel default-->	
+		</form><!--form method-->
+		
+	<section id="maintenance" class="maintenance">											
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-skin">
+					<div class="panel-heading">
+						<h3 class="panel-title"></h3>
+					</div>
+							<div class="tablepanel-body">
+								<form role="form" class="lead">											
+									<div class="row">
+										<!--Search-->
+										<div class="form-group">
+											<div class="col-md-4">
+											<div class="input-group  pull-right">
+											  <input type="text" class="form-control" name="btnSearchCusID" id="btnSearch"  placeholder="Search here"  style="font-size:14px;">
+											  <div class="input-group-btn">
+												<input type="submit" value="SEARCH"class="btn btn-skin"  name="txtSearchCusID" id="txtSearchCusID" data-toggle="dropdown">
+											  </div>
+											</div>
+										  </div>
+										</div>
+									</div>
+								</div>
+										<div class="row">
+											<div class="col-md-12 col-xs-10 pull-left">
+												<p></p>
+												<div class="table-responsive">
+													<table border="2" style="width:100%" id="tblService" class="table table-bordered table-hover" ondblclick="getRowIdentifier(event);">
+								
+															<tr style="background: #ccccb3">
+																<th class="columnsize"><small>ServiceID</small></th>
+																<th class="columnsize"><small>Category Name</small></th>
+																<th class="columnsize"><small>Service Name</small></th>
+																<th class="columnsize"><small>Description</small></th>
+																<th class="columnsize"><small>Price</small></th>
+																
+															</tr>
+
+
+													
+
+																	<tr>
+																		
+																	</tr>
+															
+													</table>
+												</div> <!--table responsive-->
+											</div> <!--col-md-12 col-xs-10 pull-left-->
+										</div>	<!-- row sa loob ng row-->
+									</div><!-- panel skin-->
+							</form>			
+						</div><!--col-lg-12-->
+					</div> <!--row maintenance-->
+					
+					
+		</section>		
+
+
+
+
+<!-- SERVICE SECTION!!!!!!-->
+						
+					
+					
+					
+					
+		</div>	<!--col-md-8-->
+	</div><!--row-->
+<div class="footer text-center" >
+  <p>Copyright © 2016 KRCH. All Rights Reserved.</p>
+</div>
+						
+
+
+
+</body>
+</html>

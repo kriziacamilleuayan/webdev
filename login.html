@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Salon & Spa</title>
+	<!-- Custom Theme files -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- //Custom Theme files -->
+	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<!--js-->
+	<script src="js/jquery-1.11.1.min.js"></script> 
+	<script src="js/modernizr.custom.js"></script>
+	<!-- //js -->
+	<script>
+		$(document).ready(function () {
+		    size_li = $("#myList li").size();
+		    x=1;
+		    $('#myList li:lt('+x+')').show();
+		    $('#loadMore').click(function () {
+		        x= (x+1 <= size_li) ? x+1 : size_li;
+		        $('#myList li:lt('+x+')').show();
+		    });
+		    $('#showLess').click(function () {
+		        x=(x-1<0) ? 1 : x-1;
+		        $('#myList li').not(':lt('+x+')').hide();
+		    });
+		});
+	</script>
+</head>
+
+<body background="images/back7.jpg" >
+	<!--banner-->
+	<div class="banner about-bnr">
+		<div class="banner-info about-bnr-info">
+			<div class="container">
+				<div class="logo">
+					<div class="ribbon">
+						<div class="ribbon-fold"><h1><font color=" #00004d"> MAKE TIME FOR YOURSELF</font></h1></div>
+					</div>
+					<h4 class="read"><center><em>Cause everybody deserves a break.</em></center></h4>
+				</div>			
+			</div>
+
+			<div class="container">
+				<div class="row">
+				<div class="col-md-4">
+				</div>
+				
+					<div class="col-md-4">
+						<div class="panel bago">
+							<div class="panel-heading">
+								<h1 class="panel-title"><center style="color:white">Sign In</center></h1>
+							</div>
+							<div class="panel-body">
+								<form role="form">
+									<fieldset>
+										<div class="form-group">
+											<input class="form-control" placeholder="Username" name="username" type="username" id="username" autofocus>
+										</div>
+										<div class="form-group">
+											<input class="form-control" placeholder="Password" name="password" type="password" id="password" autofocus>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input name="remember" type="checkbox" value="Remember Me">Remember Me</input>
+											</label>
+										</div>
+										<span><center><a  class="btn btn-lg btn-success btn-bloc" onclick="javascript:validate()">Login</a></center></span>
+										<center><h4><a href="signup.html">Not Registered Yet? Sign Up Here</a></h4></center>
+									</fieldset>
+								</form>
+
+								<script type="text/javascript">
+								function validate()
+								{
+								    if(   document.getElementById("username").value == "user"
+								       && document.getElementById("password").value == "user" )
+								    {
+								        alert( "Welcome!" );
+								        location.href="index.html";
+								    }
+					
+									 else if(   document.getElementById("username").value == "admin"
+								       && document.getElementById("password").value == "admin" )
+								    {
+								        alert( "Welcome Admin!" );
+								        location.href="maintenance.html";
+								    }
+								  
+
+								    else
+								    {
+								        alert( "Invalid Data" );
+								        location.href="login.html";
+								    }
+								}
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+	<!--//banner-->
+			
+	<!--footer-->
+	
+	<footer class="foot text-center">
+  <p>Copyright © 2016 KRCH. All Rights Reserved.</p>
+</footer>
+
+	<!--//footer-->
+
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>

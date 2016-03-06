@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Bookworms</title>
+	<!-- Custom Theme files -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- //Custom Theme files -->
+	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+	<!--js-->
+	<script src="js/jquery-1.11.1.min.js"></script> 
+	<script src="js/modernizr.custom.js"></script>
+	<!-- //js -->
+	<script>
+		$(document).ready(function () {
+		    size_li = $("#myList li").size();
+		    x=1;
+		    $('#myList li:lt('+x+')').show();
+		    $('#loadMore').click(function () {
+		        x= (x+1 <= size_li) ? x+1 : size_li;
+		        $('#myList li:lt('+x+')').show();
+		    });
+		    $('#showLess').click(function () {
+		        x=(x-1<0) ? 1 : x-1;
+		        $('#myList li').not(':lt('+x+')').hide();
+		    });
+		});
+	</script>
+	
+	<script>
+	function isAlpha(evt) 
+		{
+    		evt = (evt) ? evt : window.event;
+		    var charCode = (evt.which) ? evt.which : evt.charCode
+        	if ((charCode < 45 || charCode > 46) && (charCode < 65 || charCode > 90) 
+        		&& (charCode < 97 || charCode > 123) && charCode != 32 && charCode !=39 )
+         	{
+        		return false;
+        }
+	    
+		return true;
+		} //isAlpha
+	</script>
+	
+	
+	<script>
+	function isNumber(evt) 
+    {
+		    evt = (evt) ? evt : window.event;
+		    var charCode = (evt.which) ? evt.which : evt.charCode;
+		    if (charCode > 31 && (charCode < 48 || charCode > 57)) 
+		    {
+		        return false;
+    }
+
+		return true;
+
+		} //isNumber
+		
+		
+	function ageFinding()
+    {
+        var birthDay = document.getElementById("idBday").value;
+        var DOB = new Date(birthDay);
+        var today = new Date();
+        var age = today.getTime() - DOB.getTime();
+        age = Math.floor(age / (1000 * 60 * 60 * 24 * 365.25));
+        
+        document.getElementById("idBday").value = age;
+        
+    } //ageFinding
+	function ageFinding()
+    {
+        var birthDay = document.getElementById("dtPickerBirthday").value;
+        var DOB = new Date(birthDay);
+        var today = new Date();
+        var age = today.getTime() - DOB.getTime();
+        age = Math.floor(age / (1000 * 60 * 60 * 24 * 365.25));
+        
+        //if(age > 0)
+        document.getElementById("intAge").value = age;
+        
+    } //ageFinding
+	
+	
+	function getRowIdentifier(e)
+	{ 
+		var strCustID = e.target.parentNode.childNodes[1].innerText;
+		var strCustFName = e.target.parentNode.childNodes[3].innerText;
+		var strCustMName = e.target.parentNode.childNodes[5].innerText;
+		var strCustLName = e.target.parentNode.childNodes[7].innerText;
+		var strCustBDay = e.target.parentNode.childNodes[9].innerText;
+		var strCustGender      = e.target.parentNode.childNodes[11].innerText;
+     	var strCustAddress      = e.target.parentNode.childNodes[13].innerText;
+     	var strCustContact      = e.target.parentNode.childNodes[15].innerText;
+     	var strCustEmail      = e.target.parentNode.childNodes[17].innerText;
+     	var strCustPass      = e.target.parentNode.childNodes[19].innerText;
+
+
+      	document.getElementById("custID").value = strCustID;
+      	document.getElementById("idfname").value = strCustFName;
+      	document.getElementById("idmname").value = strCustMName;
+      	document.getElementById("idlname").value = strCustLName;
+      	document.getElementById("dtPickerBirthday").value = strCustBDay;
+      	ageFinding();
+
+      	if(strCustGender == "Male")
+      		document.getElementById("radios-0").checked = true;
+		else
+		document.getElementById("radios-1").checked = true;
+
+		document.getElementById("idcontact").value = strCustContact;    
+		document.getElementById("idaddress").value = strCustAddress;
+      	document.getElementById("idemail").value = strCustEmail;
+      	document.getElementById("idpassword").value = strCustPass;
+   	  	      	
+		scrollToTop();		
+	}
+	
+	function pageRefresh()
+	{
+		location.reload();
+	}
+
+		function scrollToTop() 
+	{
+  	
+	var timeOut;
+
+
+  		if (document.body.scrollTop!=0 || document.documentElement.scrollTop!=0)
+  			{
+   	 			window.scrollBy(0,-50);
+    			timeOut=setTimeout('scrollToTop()',10);
+  		}
+
+  		else clearTimeout(timeOut);
+
+	} //scrollToTop	
+	
+	</script>
+</head>
+
+<body background="images/back7.jpg">
+	<!--banner-->
+	<div class="banner about-bnr">
+		<div class="banner-info about-bnr-info">
+			<div class="container">
+				<div class="logo">
+					<div class="ribbon">
+						<div class="ribbon-fold"><h1><font color=" #00004d"> MAKE TIME FOR YOURSELF</font></h1></div>
+					</div>
+					<h4 class="read"><center><em>Cause everybody deserves a break.</em></center></h4>
+				</div>			
+			</div>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-4">
+						<div class="panel bago">
+							<div class="panel-heading">
+								<h1 class="panel-title"><center>Fill Up the Form</center></h1>
+							</div>
+							<div class="panel-body">
+								<form role="form">
+									<fieldset>
+										<div class="form-group">
+											<input class="form-control" placeholder="First Name" name="firstname" type="text" autofocus>
+										</div>
+										<div class="form-group">
+											<input class="form-control" placeholder="Middle Name" name="middlename" type="text" autofocus>
+										</div>
+										<div class="form-group">
+											<input class="form-control" placeholder="Last Name" name="lastname" type="text" autofocus>
+										</div>
+										<div class="form-group">
+											<input class="form-control" placeholder="Last Name" name="birth" type="date" id="dtPickerBirthday" min="1914-12-31" autofocus>
+											
+										</div>
+										<div class="form-group">
+											Gender: 												  <div class="radio">
+													<label for="radios-0">
+													  <input  type="radio" name="gender" id="radios-0" value="Male" checked="checked">
+													  Male
+													</label>
+													</div>
+												  <div class="radio">
+													<label for="radios-1">
+													  <input  type="radio" name="gender" id="radios-1" value="Female">
+													  Female
+													</label>
+													</div>
+										</div>
+										<div class="form-group">
+											<input class="form-control" placeholder="Contact Number" name="contact" type="text" maxlength="11" onkeypress="return isNumber(event)" onpaste="return false"  autofocus>
+										</div>
+										
+										<div class="form-group">
+											<input class="form-control" placeholder="Address" name="adress" type="text" onpaste="return false" pattern=".*\S+.*" autofocus>
+										</div>
+										
+										<div class="form-group">
+											<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+										</div>
+										<div class="form-group">
+											<input class="form-control" placeholder="Password" name="password" type="password" autofocus>
+										</div>
+										<div class="form-group">
+											<input class="form-control" placeholder="Confirm Password" name="cpassword" type="cpassword" autofocus>
+										</div>
+										<a href="login.html" class="btn btn-lg btn-success btn-block">Register</a>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+	<!--//banner-->
+	<!--footer-->
+	
+
+<div class="footer text-center" >
+  <p>Copyright © 2016 KRCH. All Rights Reserved.</p>
+</div>
+
+
+	<!--//footer-->
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>
